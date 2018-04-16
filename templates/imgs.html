@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  </head>
+  <body>
+  <h1>12odin News图片上传</h1>
+  <div>
+    <form method="post" enctype="multipart/form-data" action="createImg">
+      <input hidden name="p" value="{{.News}}" />
+      <input name="img" type="file"/>
+      <button>上传</button>
+    </form>
+  </div>
+    <table>
+      <tr>
+        <th>imgs</th>
+        <th>操作</th>
+      </tr>
+      {{range .Imgs}}
+      <tr>
+        <td>{{.}}</td>
+        <td>
+          <a href="imgs/{{$.News}}/{{.}}">查看</a>
+          <a href="delImg?p={{$.News}}&f={{.}}" onclick="return confirm('确认删除文件?')">删除</a>
+        </td>
+      </tr>
+      {{end}}
+    </table>
+    <br/>
+    <a href="/">返回目录</a>
+  </body>
+</html>
